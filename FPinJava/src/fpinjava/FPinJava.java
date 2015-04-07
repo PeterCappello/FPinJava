@@ -1,4 +1,4 @@
-/*
+/**
  * The MIT License
  *
  * Copyright 2015 peter.
@@ -21,6 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package fpinjava;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
