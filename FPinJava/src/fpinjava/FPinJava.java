@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Sum the 10% discounted prices of prices > 20.
  * @author Peter Cappello
  */
 public class FPinJava 
@@ -41,10 +41,21 @@ public class FPinJava
                 new BigDecimal( "45" ), new BigDecimal( "12" )
         );
         final BigDecimal sumOfDiscountedPrices =
-                priceList.stream().
-                filter( price -> price.compareTo( BigDecimal.valueOf( 20 ) ) > 0 )
+                priceList.stream()
+                .filter( price -> price.compareTo( BigDecimal.valueOf( 20 ) ) > 0 )
                 .map( price -> price.multiply( BigDecimal.valueOf( 0.9 ) )  )
                 .reduce( BigDecimal.ZERO, BigDecimal::add );
         System.out.println("Sum of discounted prices: " + sumOfDiscountedPrices );
+        
+                
+        BigDecimal mySum = BigDecimal.ZERO;       
+        for ( BigDecimal price : priceList )
+        {
+            if ( price.compareTo( BigDecimal.valueOf( 20 ) ) > 0 )
+            {
+                mySum = mySum.add( price.multiply( BigDecimal.valueOf( 0.9 ) ) );
+            }
+        }
+        System.out.println("mySum of discounted prices: " + mySum );
     }
 }
