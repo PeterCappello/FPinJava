@@ -40,22 +40,27 @@ public class FPinJava
                 new BigDecimal( "15" ), new BigDecimal( "18" ),
                 new BigDecimal( "45" ), new BigDecimal( "12" )
         );
-        final BigDecimal sumOfDiscountedPrices =
+        
+        // functional style
+        final BigDecimal functionalSumOfDiscountedPrices =
                 priceList.stream()
                 .filter( price -> price.compareTo( BigDecimal.valueOf( 20 ) ) > 0 )
                 .map( price -> price.multiply( BigDecimal.valueOf( 0.9 ) )  )
                 .reduce( BigDecimal.ZERO, BigDecimal::add );
-        System.out.println("Sum of discounted prices: " + sumOfDiscountedPrices );
         
-                
-        BigDecimal mySum = BigDecimal.ZERO;       
+        // imperative style
+        BigDecimal imperativeSumOfDiscountedPrices = BigDecimal.ZERO;       
         for ( BigDecimal price : priceList )
         {
             if ( price.compareTo( BigDecimal.valueOf( 20 ) ) > 0 )
             {
-                mySum = mySum.add( price.multiply( BigDecimal.valueOf( 0.9 ) ) );
+                imperativeSumOfDiscountedPrices = imperativeSumOfDiscountedPrices.add( price.multiply( BigDecimal.valueOf( 0.9 ) ) );
             }
         }
-        System.out.println("mySum of discounted prices: " + mySum );
+        
+        System.out.println(
+                "functionalSumOfDiscountedPrices: " + functionalSumOfDiscountedPrices +
+                "\nimperativeSumOfDiscountedPrices: " + imperativeSumOfDiscountedPrices 
+        );
     }
 }
